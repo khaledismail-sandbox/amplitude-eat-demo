@@ -1,0 +1,254 @@
+{
+  "event_names": [
+    "Food Home Viewed",
+    "Restaurant Menu Viewed",
+    "Checkout Started",
+    "Payment Details Viewed",
+    "Food Order Completed",
+    "Unconfirmed Address Continue Tapped",
+    "Food Searched",
+    "Cuisine Browsed",
+    "Restaurant Saved",
+    "Restaurant Recommendation Selected",
+    "Food Offer Viewed",
+    "Restaurant Reviews Read",
+    "Food Checkout Abandoned",
+    "Food Promo Code Entered",
+    "Demo Session Ended",
+    "Food Item Added",
+    "Basket Viewed",
+    "Saved Delivery Address Selected",
+    "New Delivery Address Started",
+    "Delivery Address Submitted",
+    "Delivery Pin Confirmed",
+    "Address Continue Dead Tap Observed",
+    "Address Continue Rage Taps Observed",
+    "Address Guidance Viewed",
+    "Delivery Address Confirmed",
+    "Demo Session Started",
+    "Demo Login Completed",
+    "Demo Logout Completed",
+    "[Amplitude] Page Viewed"
+  ],
+  "event_property_names_observed": [
+    "[Amplitude] Page Domain",
+    "[Amplitude] Page Location",
+    "[Amplitude] Page Path",
+    "[Amplitude] Page Title",
+    "[Amplitude] Page URL",
+    "abandonment_reason",
+    "abandonment_stage",
+    "address_entry_method",
+    "attempt_number",
+    "availability",
+    "avg_rating_viewed",
+    "basket_subtotal",
+    "code_entered",
+    "code_valid",
+    "control_id",
+    "converted",
+    "cuisine",
+    "currency",
+    "data_origin",
+    "deepest_funnel_step_reached",
+    "delivery_address_saved",
+    "delivery_fee",
+    "delivery_fee_waived",
+    "demo_mode",
+    "demo_number",
+    "discount_pct",
+    "discount_value",
+    "filter_used",
+    "flag_key",
+    "identity_method",
+    "identity_origin",
+    "initial_referrer",
+    "initial_referring_domain",
+    "initial_utm_campaign",
+    "initial_utm_medium",
+    "initial_utm_source",
+    "is_first_order",
+    "is_return_visit",
+    "item_price",
+    "items_visible",
+    "logout_reason",
+    "menu_item_id",
+    "native_replay_classification_verified",
+    "no_feedback_ms",
+    "order_id",
+    "order_total",
+    "pin_confirmed",
+    "position_in_list",
+    "promo_applied",
+    "promo_attempted",
+    "promotion_type",
+    "quantity",
+    "rating_score",
+    "recommendation_context",
+    "referrer",
+    "referrer_source",
+    "referring_domain",
+    "restaurant_id",
+    "results_count",
+    "reviews_count",
+    "reviews_read",
+    "search_query",
+    "session_duration_seconds",
+    "session_start_reason",
+    "signal_origin",
+    "sort_applied",
+    "tap_count",
+    "tax_amount",
+    "utm_campaign",
+    "utm_medium",
+    "utm_source",
+    "variant",
+    "window_ms",
+    "zero_results"
+  ],
+  "user_property_names_observed": [
+    "account_age_days",
+    "country",
+    "customer_activity_level",
+    "data_origin",
+    "delivery_address_saved",
+    "demo_mode",
+    "device_type",
+    "experiment_flag",
+    "experiment_variant",
+    "initial_referrer",
+    "initial_referring_domain",
+    "initial_utm_campaign",
+    "initial_utm_medium",
+    "initial_utm_source",
+    "lifetime_completed_orders",
+    "loyalty_tier",
+    "membership_plan",
+    "ordering_frequency",
+    "orders_last_365_days",
+    "profile_history_basis",
+    "referrer",
+    "referring_domain",
+    "utm_campaign",
+    "utm_medium",
+    "utm_source"
+  ],
+  "top_level_event_options": [
+    "country",
+    "user_id",
+    "device_id",
+    "session_id",
+    "time",
+    "insert_id",
+    "revenue",
+    "price",
+    "quantity",
+    "revenueType",
+    "currency"
+  ],
+  "confirmed_enum_values": {
+    "cuisine": [
+      "Burgers",
+      "Pizza",
+      "Shawarma",
+      "Salads",
+      "Asian"
+    ],
+    "loyalty_tier": [
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "membership_plan": [
+      "standard",
+      "eats_plus"
+    ],
+    "ordering_frequency": [
+      "daily",
+      "weekly",
+      "monthly",
+      "occasional",
+      "new"
+    ],
+    "customer_activity_level": [
+      "power",
+      "regular",
+      "light",
+      "new"
+    ],
+    "address_entry_method": [
+      "saved",
+      "new"
+    ],
+    "experiment_variant": [
+      "control",
+      "treatment",
+      "not_enrolled"
+    ],
+    "experiment_flag": [
+      "unconfirmed-address-continue-tapped-reduction"
+    ],
+    "currency": [
+      "USD"
+    ],
+    "data_origin": [
+      "synthetic_history",
+      "browser_demo"
+    ],
+    "promotion_type": [
+      "banner",
+      "popup",
+      "sale_page"
+    ],
+    "recommendation_context": [
+      "similar",
+      "trending",
+      "personalised"
+    ],
+    "availability": [
+      "in_stock",
+      "low_stock",
+      "out_of_stock"
+    ],
+    "sort_applied": [
+      "popular",
+      "price_asc",
+      "price_desc",
+      "newest"
+    ],
+    "abandonment_stage": [
+      "delivery_address"
+    ],
+    "abandonment_reason": [
+      "unconfirmed_pin",
+      "demo_exit"
+    ],
+    "control_id": [
+      "continue-to-payment"
+    ],
+    "signal_origin": [
+      "explicit_custom_instrumentation"
+    ],
+    "country": [
+      "United Arab Emirates",
+      "Saudi Arabia",
+      "Qatar",
+      "Kuwait",
+      "Bahrain",
+      "Oman",
+      "Jordan",
+      "Egypt",
+      "Morocco",
+      "Tunisia",
+      "Kenya",
+      "Nigeria",
+      "Ghana",
+      "South Africa"
+    ]
+  },
+  "notes": [
+    "browser_demo is the confirmed marker for future browser traffic, not a claim that it was in the historical upload.",
+    "Do not emit control/treatment assignments manually from the app.",
+    "Ordinary currency can be an event property; reserved revenue fields remain top-level event options."
+  ]
+}

@@ -1,0 +1,24 @@
+export const root=new URL('../',import.meta.url);
+export const countries=['United Arab Emirates','Saudi Arabia','Qatar','Kuwait','Bahrain','Oman','Jordan','Egypt','Morocco','Tunisia','Kenya','Nigeria','Ghana','South Africa'];
+export const dishes=[{id:'ASI-5555',name:'Sesame chicken rice bowl',cuisine:'Asian',cents:1255,photo:'bowl',description:'Sesame chicken, rice & crisp vegetables'},{id:'BUR-3455',name:'Classic beef burger',cuisine:'Burgers',cents:1222,photo:'burger',description:'Beef patty, lettuce & house sauce'},{id:'PIZ-3053',name:'Margherita pizza',cuisine:'Pizza',cents:841,photo:'pizza',description:'Tomato, mozzarella & fresh basil'},{id:'SHA-8672',name:'Chicken shawarma wrap',cuisine:'Shawarma',cents:2021,description:'Chicken · flatbread · garlic · pickles'},{id:'SAL-8893',name:'Garden salad bowl',cuisine:'Salads',cents:2207,photo:'salad',description:'Leafy greens, seasonal vegetables & herbs'}];
+export const cuisines=['Burgers','Pizza','Shawarma','Salads','Asian'];
+export const money=c=>'$'+(c/100).toFixed(2);
+export const day=()=>new Date().toISOString().slice(0,10);
+export function generateUserId(name,n){return `${name.trim().toLowerCase().replace(/[^a-z0-9]+/g,'')||'user'}_${n}_${day().replaceAll('-','')}`}
+export const standalone=location.pathname===new URL('address-help/',root).pathname||location.pathname===new URL('address-help/index.html',root).pathname;
+const ns='amplitude-eats:';
+export function getLogin(){if(standalone)return null;try{const p=JSON.parse(localStorage.getItem(ns+'login:'+day()));return p&&p.date===day()&&countries.includes(p.country)&&['saved','new'].includes(p.kind)&&p.userId===generateUserId(p.name,p.number)?p:null}catch{return null}}
+export function profile(kind){return kind==='saved'?{loyalty_tier:'silver',membership_plan:'eats_plus',ordering_frequency:'weekly',orders_last_365_days:223,customer_activity_level:'regular',lifetime_completed_orders:357,account_age_days:378,delivery_address_saved:true}:{loyalty_tier:'bronze',membership_plan:'standard',ordering_frequency:'monthly',orders_last_365_days:34,customer_activity_level:'regular',lifetime_completed_orders:34,account_age_days:18,delivery_address_saved:false}}
+export function initialState(){return {cart:{},favorite:false,promo:false,promoAttempted:false,draft:null,orders:[],pending:null,orderId:null,step:0,converted:false,started:Date.now(),sessionStarted:false,selected:null,checkoutAttempt:0}}
+export function stateKey(p){return ns+'state:'+p.userId+':'+day()}
+export function loadState(p){try{return JSON.parse(localStorage.getItem(stateKey(p)))||initialState()}catch{return initialState()}}
+export function saveState(p,s){if(!standalone)localStorage.setItem(stateKey(p),JSON.stringify(s))}
+export function clearContext(p){localStorage.removeItem(stateKey(p));localStorage.removeItem(ns+'login:'+day());localStorage.removeItem(ns+'return');localStorage.removeItem(ns+'records');}
+export function setLogin(p){localStorage.setItem(ns+'login:'+day(),JSON.stringify(p))}
+export function totals(p,s){const subtotal=dishes.reduce((t,d)=>t+d.cents*(s.cart[d.id]||0),0),tax=Math.round(subtotal*.05),delivery=subtotal?(p.kind==='saved'?0:300):0,discount=s.promo?Math.round((subtotal+tax+delivery)*.1):0;return {subtotal,tax,delivery,discount,total:subtotal+tax+delivery-discount}}
+export function amountProps(p,s){const t=totals(p,s);return {basket_subtotal:t.subtotal/100,tax_amount:t.tax/100,delivery_fee:t.delivery/100,discount_value:t.discount/100,order_total:t.total/100,delivery_fee_waived:p.kind==='saved',promo_attempted:s.promoAttempted,promo_applied:s.promo,currency:'USD',quantity:Object.values(s.cart).reduce((a,b)=>a+b,0),restaurant_id:'restaurant-asian'}}
+const refs=['https://www.google.com/search?q=food+delivery','https://www.google.com/search?q=amplitude+eats','https://www.instagram.com/','https://dining-partner.example/','https://chatgpt.com/'];
+export const acquisitions=[['Direct','',''],['Paid Search','google','cpc'],['Organic Search','google','organic'],['Organic Social','instagram','social'],['Affiliates','dining_partner','affiliate'],['LLM Search','ai_recommendation','llm']];
+export function acquisition(i){if(!i)return {};const a=acquisitions[i],referrer=refs[i-1];return {utm_source:a[1],utm_medium:a[2],utm_campaign:'address_checkout_demo',referrer,referring_domain:new URL(referrer).hostname}}
+export function arrival(){const q=new URLSearchParams(location.search),a={};for(const k of ['utm_source','utm_medium','utm_campaign'])if(q.get(k))a[k]=q.get(k);if(document.referrer&&new URL(document.referrer).origin!==location.origin){a.referrer=document.referrer;a.referring_domain=new URL(document.referrer).hostname}return a}
+export function newDraft(p){return {address:'Demo Building 12, Test Street',city:'Dubai',country:p.country,apartment:'',instructions:'',x:50,y:44,pin_confirmed:false,submitted:false,address_entry_method:'new',attempts:0}}

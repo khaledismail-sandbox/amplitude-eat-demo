@@ -1,0 +1,1 @@
+*{box-sizing:border-box}body,h1,h2,h3,p{margin:0}button,input,select,textarea{font:inherit}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}[hidden]{display:none!important}button,a{touch-action:manipulation}img{display:block;max-width:100%}button{cursor:pointer}a{color:inherit}button:disabled{cursor:default;opacity:.45}
