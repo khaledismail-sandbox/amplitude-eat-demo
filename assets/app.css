@@ -2,3 +2,25 @@
 
 /* Single planned visual fix pass: more compact discovery header and left-aligned delivery control. */
 #deliver{text-align:left;justify-content:flex-start;padding-left:0}#deliver span{text-align:left}main>h1{margin-bottom:16px}.offer{padding:16px}.address-fix .map{margin-top:18px}
+
+/* Login-only demo controls: quiet footer, with the primary sign-in action kept prominent. */
+.login-page{display:flex;flex-direction:column;min-height:0}
+.login-page #login{display:flex;flex-direction:column;flex:1;margin-top:10px}
+.login-intro p{max-width:300px}
+.login-primary .primary{margin-top:20px}
+.demo-controls{margin-top:auto;padding-top:36px;color:var(--muted)}
+.demo-controls-title{display:block;font-size:10px;font-weight:500;letter-spacing:.2px;border-top:1px solid #edf0f4;padding-top:12px}
+.demo-controls-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 10px;margin-top:8px}
+.demo-controls-grid>div{min-width:0}
+.demo-controls label{font-size:10px;font-weight:400;margin:0 0 4px;color:var(--muted)}
+.demo-controls input,.demo-controls select{min-height:32px;height:32px;font-size:10px;padding:5px 7px;border-radius:6px;border-color:#e4e7ed;color:var(--muted);background:#fcfcfd;width:100%}
+.demo-controls-meta{display:flex;align-items:center;gap:8px;margin-top:10px}
+.demo-controls .demo-recorder{display:inline-flex;align-items:center;gap:7px;margin:0;min-height:28px;cursor:pointer}
+.demo-controls .demo-recorder input{appearance:none;position:relative;width:28px;min-width:28px;height:16px;min-height:16px;padding:0;border:1px solid #c8cdd8;border-radius:20px;background:#e8ebf0;cursor:pointer}
+.demo-recorder input:before{content:'';position:absolute;left:2px;top:2px;width:10px;height:10px;border-radius:50%;background:white;box-shadow:0 1px 2px #001a4f25;transition:transform .12s ease}
+.demo-controls .demo-recorder input:checked{background:var(--blue);border-color:var(--blue)}
+.demo-recorder input:checked:before{transform:translateX(12px)}
+.demo-controls-hint{font-size:9px;color:var(--muted);margin-left:auto}
+.demo-identity{font-size:9px;line-height:1.5;margin-top:5px;overflow-wrap:anywhere;color:var(--muted)}
+.demo-identity>span{margin-right:5px}
+@media(prefers-reduced-motion:reduce){.demo-recorder input:before{transition:none}}
